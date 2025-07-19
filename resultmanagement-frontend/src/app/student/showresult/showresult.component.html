@@ -1,0 +1,50 @@
+<!-- Student Result Display Component -->
+<div class="container">
+    <div class="row">
+        <!-- Back Button Section -->
+        <div class="col-12">
+            <div class="wrapper">
+                <div class="p-5">
+                    <button class="btn btn-success " routerLink="/student/studentdashboard">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Table Section -->
+        <div class="col-10 ">
+            <div class="wrapper text-center ps-5">
+                <div class="card">
+                    <!-- Card Header -->
+                    <div class="card-header bg-success text-light fw-bold fs-5">
+                        Student Result
+                    </div>
+
+                    <!-- Card Body with Result Table -->
+                    <div class="card-body bg-danger-subtle">
+                        <table class="table table-bordered table-warning ">
+                            <!-- Table Header -->
+                            <thead>
+                                <tr>
+                                    <th>Roll No.</th>
+                                    <th> Name</th>
+                                    <th> Date of Birth</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+
+                            <!-- Table Body with Dynamic Data -->
+                            <tbody>
+                                <tr *ngFor="let data of studentData">
+                                    <td>{{data.rollno}}</td>
+                                    <td>{{data.name}}</td>
+                                    <td>{{data.dob}}</td>
+                                    <td>{{data.score}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

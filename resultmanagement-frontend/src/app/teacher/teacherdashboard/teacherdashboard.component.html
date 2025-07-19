@@ -1,0 +1,56 @@
+<!-- Action Buttons Section -->
+<div class="p-5 text-center">
+    <button class="btn btn-success" routerLink="/teacher/addresult">
+        Add Record
+    </button>
+</div>
+
+<!-- Results Table Section -->
+<div class="card p-5 bg-primary-subtle">
+    <!-- PrimeNG Table Component -->
+    <p-table [value]="resultList" #dt2 dataKey="rollno" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true" [globalFilterFields]="['name','rollno']" [tableStyle]="{ 'min-width': '75rem' }">
+
+        <!-- Table Search -->
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <p-iconfield iconPosition="left" class="ml-auto">
+                    <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search By Roll No. or Name" class="inputValue px-2" />
+                </p-iconfield>
+            </div>
+        </ng-template>
+
+        <!-- Table Header -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Roll No.</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Score</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </ng-template>
+
+        <!-- Table Body -->
+        <ng-template pTemplate="body" let-result>
+            <tr>
+                <td>{{ result.rollno }}</td>
+                <td>{{ result.name }}</td>
+                <td>{{ result.dob | date:'mediumDate' }}</td>
+                <td>{{ result.score }}</td>
+                <td>
+                    <button pButton icon="pi pi-user-edit" class="p-button-help" (click)="edit(result)" pTooltip="Edit"
+                        tooltipPosition="top">
+                    </button>
+                </td>
+                <td>
+                    <button pButton icon="pi pi-trash" class="p-button-danger" (click)="deleteResult(result._id)"
+                        pTooltip="Delete" tooltipPosition="top">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

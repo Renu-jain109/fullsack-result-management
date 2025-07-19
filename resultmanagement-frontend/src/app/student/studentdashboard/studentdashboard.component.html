@@ -1,0 +1,30 @@
+<!-- Main container for student dashboard -->
+<div class="example-container">
+  <div class="form-container">
+    <!-- Student result search form -->
+    <form [formGroup]="studentResult">
+      <!-- Form header -->
+      <mat-toolbar>
+        <span>Find Result</span>
+      </mat-toolbar>
+
+      <!-- Roll number input field -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Roll No.</mat-label>
+        <input matInput formControlName="rollno" placeholder="Enter roll number">
+      </mat-form-field>
+
+      <!-- Name input field -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter student name">
+      </mat-form-field>
+
+      <!-- Action buttons -->
+      <div class="example-button-row">
+        <button mat-flat-button color="primary" (click)="submit()">Search</button>
+        <button mat-flat-button (click)="clear()">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>

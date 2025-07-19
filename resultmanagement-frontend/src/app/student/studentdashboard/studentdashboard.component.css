@@ -1,0 +1,33 @@
+/* Main container styling */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+}
+
+/* Toolbar styling */
+.mat-toolbar {
+    text-align: center;
+    display: block;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Form layout */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form field width */
+.form-field {
+    width: 400px;
+}
+
+.example-button-row {
+    flex-direction: row;
+    display: flex;
+    gap: 10px;
+}

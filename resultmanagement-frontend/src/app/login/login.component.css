@@ -1,0 +1,36 @@
+/* 
+ * Login Component Styles
+ * Contains styles for the login form divider and responsive layout
+ */
+
+/* 
+ * Divider line styles for the "OR" separator in the login form
+ * Creates a horizontal line on both sides of the divider text
+ */
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+/* 
+ * Custom height utility class for the login form container
+ * Adjusts the height to account for header/footer space
+ */
+.h-custom {
+    height: calc(100% - 120px);
+    padding-bottom: 50px;
+}
+
+/* 
+ * Mobile responsive adjustments
+ * Optimizes the layout for screens smaller than 450px
+ */
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+        padding-bottom: 20px;
+    }
+}

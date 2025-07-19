@@ -1,0 +1,33 @@
+<!-- Main Header Component -->
+<div class="container-fluid">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary d-flex flex-direction-row">
+        <!-- Application Title -->
+        <div class="col-6">
+            <h1 class="text-light ps-5">Result Management</h1>
+        </div>
+
+        <!-- Navigation Links Section -->
+        <div class="collapse navbar-collapse text-end d-flex flex-row gap-5 justify-content-center ps-5">
+            <!-- Display Logged-in User's Name -->
+            <div class="text-light fs-4">{{user}}</div>
+
+            <!-- Login Button (Shows when user is not logged in) -->
+            <div class="ps-5" *ngIf="!loggedIn">
+                <a class="btn btn-outline-light" routerLink="/login">Login</a>
+            </div>
+
+            <!-- Logout Button (Shows when user is logged in) -->
+            <div class="ps-5" *ngIf="loggedIn">
+                <a class="btn btn-outline-light" (click)="logOut()">Logout</a>
+            </div>
+
+            <!-- Registration Button (Always visible) -->
+            <div class="ps-5">
+                <button type="button" class="btn btn-outline-light" routerLink="/registration">Registration</button>
+            </div>
+        </div>
+    </nav>
+
+  
+</div>

@@ -1,0 +1,74 @@
+<!-- Main container for add result form -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Back button section -->
+    <div class="col-12">
+      <div class="p-3">
+        <button type="button" class="btn btn-primary py-2 px-4 fs-4" routerLink="/teacher/teacherdashboard">
+          Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Main form section -->
+    <div class="col-12">
+      <div class="wrapper d-flex mt-5">
+        <div class="col-4"></div>
+
+        <!-- Result form -->
+        <div class="col-4">
+          <form [formGroup]="addResultForm" class="d-flex flex-column gap-3">
+            <h3 class="text-center mb-4">Add New Result</h3>
+
+            <!-- Roll Number Field -->
+            <div class="form-group row">
+              <label for="inputRollNo" class="col-sm-2 col-form-label">Roll No</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRollNo" formControlName="rollno"
+                  placeholder="Enter roll no">
+              </div>
+            </div>
+
+            <!-- Student Name Field -->
+            <div class="form-group row">
+              <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Enter name">
+              </div>
+            </div>
+
+            <!-- Date of Birth Field -->
+            <div class="form-group row">
+              <label for="inputDob" class="col-sm-2 col-form-label">DOB</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="inputDob" formControlName="dob">
+              </div>
+            </div>
+
+            <!-- Score Field -->
+            <div class="form-group row">
+              <label for="inputScore" class="col-sm-2 col-form-label">Score</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="inputScore" formControlName="score"
+                  placeholder="Enter score">
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex flex-row gap-3 justify-content-center mt-4">
+              <button type="button" class="btn btn-outline-primary" (click)="submit()">
+                Submit
+              </button>
+              <button type="button" class="btn btn-outline-secondary" (click)="resetForm()">
+                Clear
+              </button>
+            </div>
+            
+          </form>
+        </div>
+
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
