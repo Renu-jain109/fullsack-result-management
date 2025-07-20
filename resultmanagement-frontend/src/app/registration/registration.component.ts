@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { RegistrationService } from './registration.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LetterPipe } from '../pipe/letter.pipe';
 
 @Component({
@@ -22,6 +22,7 @@ export class RegistrationComponent implements OnInit {
   formBuilder = inject(FormBuilder);
   registrationService = inject(RegistrationService);
   toastr = inject(ToastrService);
+  router: any = inject(Router); // Use 'Router' injection token for routing
 
   // Initialize form with validation rules
   ngOnInit(): void {
@@ -62,6 +63,8 @@ export class RegistrationComponent implements OnInit {
       next: (res: any) => {
         this.toastr.success("Registration successful");
         this.registrationForm.reset();
+        // Optionally, redirect or perform other actions after successful registration
+         this.router.navigate(['/login']);
       },
       error: (error) => {
         this.toastr.error('Registration failed');
