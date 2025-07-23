@@ -41,12 +41,28 @@ export class HeaderComponent implements OnInit {
    * Lifecycle hook that is called after data-bound properties are initialized
    * Used to set up the component's initial state
    */
+  isMenuOpen = false;
+
   ngOnInit(): void {
-    if(this.loginService.isAuthenticated()){
-      this.loggedIn = this.loginService.isAuthenticated();
+    if (this.loginService.isAuthenticated()) {
+      this.loggedIn = true;
     }
     this.user = this.username || null;
-   this.getRole();
+    this.getRole();
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (this.isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+    document.body.style.overflow = '';
   }
 
 getRole(){

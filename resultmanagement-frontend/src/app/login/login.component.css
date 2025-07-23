@@ -1,36 +1,194 @@
-/* 
- * Login Component Styles
- * Contains styles for the login form divider and responsive layout
- */
-
-/* 
- * Divider line styles for the "OR" separator in the login form
- * Creates a horizontal line on both sides of the divider text
- */
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+/* Main Container */
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  padding-top: 64px; /* Height of the header */
+  box-sizing: border-box;
 }
 
-/* 
- * Custom height utility class for the login form container
- * Adjusts the height to account for header/footer space
- */
-.h-custom {
-    height: calc(100% - 120px);
-    padding-bottom: 50px;
+.login-container {
+  height: calc(100vh - 64px); /* Viewport height minus header */
+  width: 100%;
+  display: flex;
+  align-items: flex-start; /* Align to top */
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
 }
 
-/* 
- * Mobile responsive adjustments
- * Optimizes the layout for screens smaller than 450px
- */
-@media (max-width: 450px) {
-    .h-custom {
-        height: 100%;
-        padding-bottom: 20px;
-    }
+/* Login Card */
+.login-card {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+/* Login Image */
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px;
+}
+
+/* Form Container */
+.login-form-container {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Form Elements */
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Role Selection */
+.role-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.role-selection {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  margin-top: 1rem;
+  background-color: #3498db;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #2980b9;
+}
+
+/* Register Link */
+.register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #6c757d;
+}
+
+.register-link a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.register-link a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .login-card {
+    max-width: 600px;
+  }
+  
+  .login-form-container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .login-container {
+    padding: 0;
+    background: white;
+  }
+  
+  .login-card {
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100%;
+  }
+  
+  .login-form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .login-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .role-selection {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-form {
+  animation: fadeIn 0.5s ease-out;
 }

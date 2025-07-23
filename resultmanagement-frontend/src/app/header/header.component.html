@@ -1,33 +1,69 @@
-<!-- Main Header Component -->
-<div class="container-fluid">
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary d-flex flex-direction-row">
-        <!-- Application Title -->
-        <div class="col-6">
-            <h1 class="text-light ps-5">Result Management</h1>
-        </div>
+<!-- Modern Header Component -->
+<header class="header">
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a routerLink="/" class="logo-link">
+        <i class="bi bi-mortarboard-fill"></i>
+        <span>ResultHub</span>
+      </a>
+    </div>
 
-        <!-- Navigation Links Section -->
-        <div class="collapse navbar-collapse text-end d-flex flex-row gap-5 justify-content-center ps-5">
-            <!-- Display Logged-in User's Name -->
-            <div class="text-light fs-4">{{user}}</div>
+    <!-- Desktop Navigation -->
+    <nav class="main-nav">
+      <!-- User Info -->
+      <div *ngIf="user" class="user-info">
+        <i class="bi bi-person-circle"></i>
+        <span class="username">{{user}}</span>
+      </div>
 
-            <!-- Login Button (Shows when user is not logged in) -->
-            <div class="ps-5" *ngIf="!loggedIn">
-                <a class="btn btn-outline-light" routerLink="/login">Login</a>
-            </div>
-
-            <!-- Logout Button (Shows when user is logged in) -->
-            <div class="ps-5" *ngIf="loggedIn">
-                <a class="btn btn-outline-light" (click)="logOut()">Logout</a>
-            </div>
-
-            <!-- Registration Button (Always visible) -->
-            <div class="ps-5">
-                <button type="button" class="btn btn-outline-light" routerLink="/registration">Registration</button>
-            </div>
-        </div>
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a *ngIf="!loggedIn" routerLink="/login" class="btn btn-login">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Sign In</span>
+        </a>
+        
+        <button *ngIf="loggedIn" (click)="logOut()" class="btn btn-logout">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Sign Out</span>
+        </button>
+        
+        <a routerLink="/registration" class="btn btn-register">
+          <i class="bi bi-person-plus"></i>
+          <span>Register</span>
+        </a>
+      </div>
     </nav>
 
-  
-</div>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.active]="isMenuOpen">
+    <div *ngIf="user" class="mobile-user">
+      <i class="bi bi-person-circle"></i>
+      <span>{{user}}</span>
+    </div>
+    
+    <a *ngIf="!loggedIn" routerLink="/login" class="mobile-link" (click)="closeMenu()">
+      <i class="bi bi-box-arrow-in-right"></i>
+      <span>Sign In</span>
+    </a>
+    
+    <button *ngIf="loggedIn" (click)="logOut(); closeMenu()" class="mobile-link">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Sign Out</span>
+    </button>
+    
+    <a routerLink="/registration" class="mobile-link" (click)="closeMenu()">
+      <i class="bi bi-person-plus"></i>
+      <span>Register</span>
+    </a>
+  </div>
+</header>
