@@ -1,37 +1,328 @@
-<!-- 
-  Modern Home Component - Landing Page
-  Features a clean, engaging design with animation and clear call-to-action
--->
-<div class="hero">
-  <div class="hero-content">
-    <div class="welcome-text">
-      <span class="welcome-greeting">Welcome to</span>
-      <h1 class="app-title">
-        <span class="primary-text">Result</span>
-        <span class="primary-text">Hub</span>
-      </h1>
-      <p class="tagline">Your one-stop solution for academic result management</p>
-      
-      <div class="cta-buttons">
-        <a class="btn btn-primary" routerLink="/login">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Get Started</span>
-        </a>
-        <a class="btn btn-outline" routerLink="/registration">
-          <i class="bi bi-person-plus"></i>
-          <span>Register Now</span>
-        </a>
-      </div>
-    </div>
-    
-    <div class="hero-image">
-      <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-      <img src="/education-illustration.jpeg" alt="Education Illustration" class="illustration">
-    </div>
-  </div>
+<div class="homepage-container">
   
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <span class="badge-text">Now Available for K-12 and Universities</span>
+        </div>
+        <h1 class="hero-title">
+          Manage Academic Results with <span class="gradient-text">Elegance</span> & <span class="gradient-text">Precision</span>
+        </h1>
+        <p class="hero-subtitle">
+          The unified, secure, and modern platform for institutions, teachers, and students to track progress, publish grades, and analyze academic growth in real time.
+        </p>
+        <div class="hero-actions">
+          <button (click)="navigateToLogin()" class="btn btn-hero-primary">
+            <span>Get Started</span>
+            <i class="bi bi-arrow-right-short"></i>
+          </button>
+          <button (click)="scrollToNextSection()" class="btn btn-hero-secondary">
+            <span>Learn More</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dashboard mockup right side -->
+      <div class="hero-visual">
+        <div class="mockup-window">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="mockup-title">resulthub.io/dashboard</div>
+          </div>
+          <div class="mockup-body">
+            <div class="dashboard-sidebar">
+              <div class="sidebar-item active"></div>
+              <div class="sidebar-item"></div>
+              <div class="sidebar-item"></div>
+            </div>
+            <div class="dashboard-content">
+              <div class="db-header">
+                <div class="db-title-mock">Academic Performance</div>
+                <div class="db-badge">Term 2</div>
+              </div>
+              <div class="db-stats-grid">
+                <div class="db-stat-card">
+                  <div class="db-stat-label">Class Average</div>
+                  <div class="db-stat-val">84.6%</div>
+                </div>
+                <div class="db-stat-card">
+                  <div class="db-stat-label">Pass Rate</div>
+                  <div class="db-stat-val highlight">98.2%</div>
+                </div>
+              </div>
+              <div class="db-chart-container">
+                <div class="chart-bar" style="height: 60%"></div>
+                <div class="chart-bar" style="height: 80%"></div>
+                <div class="chart-bar" style="height: 45%"></div>
+                <div class="chart-bar" style="height: 95%"></div>
+                <div class="chart-bar" style="height: 70%"></div>
+              </div>
+              <div class="student-list-mock">
+                <div class="student-row">
+                  <span class="st-name">Aarav Patel</span>
+                  <span class="st-grade pass">A+</span>
+                </div>
+                <div class="student-row">
+                  <span class="st-name">Neha Sharma</span>
+                  <span class="st-grade pass">A</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+        <h3 class="stat-number">
+          <span [countUp]="studentsCount" [options]="countUpOptions">0</span>+
+        </h3>
+        <p class="stat-label">Active Students</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-building-fill"></i></div>
+        <h3 class="stat-number">
+          <span [countUp]="schoolsCount" [options]="countUpOptions">0</span>+
+        </h3>
+        <p class="stat-label">Institutions Trusted</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-shield-check"></i></div>
+        <h3 class="stat-number">
+          <span [countUp]="uptimeRate" [options]="decimalOptions">0</span>
+        </h3>
+        <p class="stat-label">System Uptime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="container section-header">
+      <h2 class="section-title">Designed for the Entire Institution</h2>
+      <p class="section-subtitle">A seamless, coordinated ecosystem providing customized portals for every stakeholder.</p>
+    </div>
+    <div class="container features-grid">
+      <div class="feature-card">
+        <div class="feature-icon admin"><i class="bi bi-sliders"></i></div>
+        <h3 class="feature-title">For Administrators</h3>
+        <p class="feature-desc">
+          Manage departments, register teachers and students, define school grading templates, and maintain complete control over academic records with robust logging.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teacher"><i class="bi bi-journal-check"></i></div>
+        <h3 class="feature-title">For Teachers</h3>
+        <p class="feature-desc">
+          Upload and edit grades rapidly, generate detailed reports, analyze class performance, and automatically compute GPA and final classifications.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon student"><i class="bi bi-mortarboard"></i></div>
+        <h3 class="feature-title">For Students & Parents</h3>
+        <p class="feature-desc">
+          Access report cards the minute they are published, view detailed subject-wise breakdown, track historical performance trends, and print official transcripts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="benefits-section">
+    <div class="container benefits-grid">
+      <div class="benefits-image-panel">
+        <div class="visual-card">
+          <div class="icon-circle"><i class="bi bi-cloud-check-fill"></i></div>
+          <h4>Secure Cloud Hosting</h4>
+          <p>Academic records are safe, fully backup-enabled, and reachable from anywhere, anytime.</p>
+        </div>
+        <div class="visual-decor shape-a"></div>
+        <div class="visual-decor shape-b"></div>
+      </div>
+      <div class="benefits-content">
+        <h2 class="section-title text-left">Built for Next-Generation Academic Workflows</h2>
+        <p class="section-subtitle text-left">Explore the advanced benefits of moving to a modern digital result manager.</p>
+        
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="benefit-details">
+              <h5>Real-Time Publications</h5>
+              <p>Eliminate delay. Publish results instantly to student portals with a single click from the teacher dashboard.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="benefit-details">
+              <h5>Intelligent Performance Insights</h5>
+              <p>Detect learning gaps early with custom analytics and subject-wise averages displayed directly on the UI.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="benefit-details">
+              <h5>Bank-Grade Privacy & Security</h5>
+              <p>Role-based access control (RBAC), secure JWT token-based authentication, and encrypted databases ensure data integrity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="process-section">
+    <div class="container section-header">
+      <h2 class="section-title">Academic Management Made Simple</h2>
+      <p class="section-subtitle">Get started with ResultHub in three straightforward steps.</p>
+    </div>
+    <div class="container process-grid">
+      <div class="process-step">
+        <div class="step-badge">1</div>
+        <h4 class="step-title">Configure & Register</h4>
+        <p class="step-desc">Administrators set up classes, subjects, and register teachers and students onto the portal.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-badge">2</div>
+        <h4 class="step-title">Log Marks & Grades</h4>
+        <p class="step-desc">Teachers input student marks into the dynamic digital grading sheets with automated calculation.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-badge">3</div>
+        <h4 class="step-title">Publish & Monitor</h4>
+        <p class="step-desc">Publish results instantly. Students view grades, download report cards, and track their analytics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section">
+    <div class="container section-header">
+      <h2 class="section-title">Loved by Academic Stakeholders</h2>
+      <p class="section-subtitle">See what teachers, students, and administrators are saying about ResultHub.</p>
+    </div>
+    <div class="container testimonials-grid">
+      <div class="testimonial-card">
+        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="testimonial-text">
+          "ResultHub has cut down our end-of-term grading cycle by more than 60%. The UI is extremely clean, and teachers love the simplicity of inputting grades."
+        </p>
+        <div class="user-profile">
+          <div class="avatar bg-1">DR</div>
+          <div>
+            <h5 class="user-name">Dr. Rajesh Patel</h5>
+            <span class="user-title">Principal, Greenwoods Academy</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="testimonial-text">
+          "Viewing grades is incredibly easy now. I don't have to wait for printed letters. The performance trends graph helps me understand where to improve."
+        </p>
+        <div class="user-profile">
+          <div class="avatar bg-2">AK</div>
+          <div>
+            <h5 class="user-name">Amit Kumar</h5>
+            <span class="user-title">High School Student</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="testimonial-text">
+          "As a teacher, saving grades and immediately generating class statistics has been a lifesaver. Extremely easy to use and very fast response times."
+        </p>
+        <div class="user-profile">
+          <div class="avatar bg-3">SM</div>
+          <div>
+            <h5 class="user-name">Sunita Mishra</h5>
+            <span class="user-title">Mathematics HOD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION BANNER -->
+  <section class="cta-section">
+    <div class="container cta-box">
+      <div class="cta-content">
+        <h2>Ready to Modernize Your Academic Management?</h2>
+        <p>Join hundreds of forward-thinking institutions using ResultHub to optimize grading and empower students.</p>
+        <div class="cta-actions">
+          <button (click)="navigateToRegistration()" class="btn btn-cta-primary">Register Your Institution</button>
+          <button (click)="navigateToLogin()" class="btn btn-cta-secondary">Sign In</button>
+        </div>
+      </div>
+      <div class="cta-decor circle-1"></div>
+      <div class="cta-decor circle-2"></div>
+    </div>
+  </section>
+
+  <!-- MODERN FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <i class="bi bi-mortarboard-fill"></i>
+          <span>ResultHub</span>
+        </div>
+        <p class="brand-desc">
+          Delivering class-leading digital academic management solutions to institutions worldwide.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav-col">
+        <h6>Product</h6>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Release Notes</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h6>Resources</h6>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Guides</a></li>
+          <li><a href="#">API Status</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h6>Contact & News</h6>
+        <p class="news-text">Subscribe to our academic newsletter for the latest updates.</p>
+        <div class="news-form">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="button" aria-label="Subscribe"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 ResultHub. All rights reserved. Designed for excellence.</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
 </div>

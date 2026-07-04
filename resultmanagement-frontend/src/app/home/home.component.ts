@@ -12,7 +12,25 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
-  // Stats data will be added here when we have real data to display
+  // Stats counters for animated statistics
+  studentsCount = 12500;
+  schoolsCount = 450;
+  uptimeRate = 99.9;
+
+  // Options for ngx-countup directive
+  countUpOptions = {
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+    duration: 2
+  };
+  
+  decimalOptions = {
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+    duration: 2,
+    decimalPlaces: 1,
+    suffix: '%'
+  };
 
   ngOnInit() {
     // Initialize any component logic here

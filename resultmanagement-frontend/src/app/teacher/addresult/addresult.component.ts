@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TeacherService } from '../teacher.service';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Component for adding new student results
@@ -22,6 +23,8 @@ export class AddresultComponent implements OnInit {
   formBuilder = inject(FormBuilder);
   teacherService = inject(TeacherService);
   router = inject(Router);
+  toastr = inject(ToastrService);
+
 
   /**
    * Initialize the form with required validators
@@ -39,27 +42,39 @@ export class AddresultComponent implements OnInit {
    * Handle form submission
    * Collects form data and sends it to the server
    */
+
   submit() {
-    if (this.addResultForm.invalid) {
-      return;
-    }
-
-    const formData = {
-      rollno: this.addResultForm.get('rollno').value,
-      name: this.addResultForm.get('name').value,
-      dob: this.addResultForm.get('dob').value,
-      score: this.addResultForm.get('score').value
-    };
-
-    this.teacherService.AddResult(formData).subscribe({
-      next: (res) => {
-        this.router.navigate(['/teacher/teacherdashboard']);
-      },
-      error: (error) => {
-        console.error('Error adding result:', error);
-      }
-    });
+  if (this.addResultForm.invalid) {
+    return;
   }
+
+  const formData = this.addResultForm.value;
+
+  this.teacherService.AddResult(formData).subscribe({
+    next: () => {
+      this.toastr.success(
+        'Result added successfully',
+        'Success'
+      );
+
+      this.router.navigate(['/teacher/teacherdashboard']);
+    },
+    error: (error) => {
+      if (error?.error?.message === 'Result already exists') {
+        this.toastr.error(
+          'Roll number already exists',
+          'Duplicate Entry'
+        );
+      } else {
+        this.toastr.error(
+          'Something went wrong. Please try again.',
+          'Error'
+        );
+      }
+    }
+  });
+}
+
 
   /**
    * Reset the form to its initial state
